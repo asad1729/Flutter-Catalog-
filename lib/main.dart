@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_catalog/screens/home_page.dart';
 import 'package:flutter_catalog/screens/login_page.dart';
 import 'package:flutter_catalog/utils/routes.dart';
+import 'package:flutter_catalog/widgets/themes.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         /*  home: HomePage(), */
         themeMode: ThemeMode.light,
-        theme: ThemeData(primarySwatch: Colors.purple),
-        darkTheme: ThemeData(brightness: Brightness.dark),
+        theme: Mythemes.lightTheme(context),
+        darkTheme: Mythemes.darkTheme(context),
         debugShowCheckedModeBanner: false,
         initialRoute: MyRoutes.homeRoute,
         routes: {
