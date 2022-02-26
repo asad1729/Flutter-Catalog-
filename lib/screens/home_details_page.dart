@@ -14,7 +14,9 @@ class homeDetailPage extends StatelessWidget {
   // ignore: dead_code
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+        ),
         backgroundColor: Mythemes.creamColor,
         bottomNavigationBar: Container(
           color: Colors.white,
@@ -59,6 +61,12 @@ class homeDetailPage extends StatelessWidget {
                                     .make(),
                                 catalog.desc.text.light.xl.light.make(),
                                 10.heightBox,
+                                """
+The phone comes with a 128 GB internal memory. The phone is also decked with Rear Camera for your images and videos. For power, the Phone reliable. """
+                                    .text
+                                    .light
+                                    .make()
+                                    .p16(),
                               ],
                             ).py64())))
               ],
