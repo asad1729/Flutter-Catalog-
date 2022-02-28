@@ -12,17 +12,18 @@ class CatalogList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: CatalogModel.items.length,
-      itemBuilder: (context, index) {
-        final catalog = CatalogModel.items[index];
-        return InkWell(
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => homeDetailPage(catalog: catalog))),
-            child: CatalogItem(catalog: catalog));
-      },
-    );
+        itemCount: CatalogModel.items.length,
+        itemBuilder: (context, index) {
+          final catalog = CatalogModel.getByPosition(index);
+          return InkWell(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => homeDetailPage(catalog: catalog),
+                  )));
+          child:
+          CatalogItem(catalog: catalog);
+        });
   }
 }
 

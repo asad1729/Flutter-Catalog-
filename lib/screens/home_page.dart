@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     final String name = "Flutter";
 
     return Scaffold(
-      backgroundColor: Mythemes.creamColor,
+      backgroundColor: Theme.of(context).cardColor,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Mythemes.darkBluish,
         onPressed: () {

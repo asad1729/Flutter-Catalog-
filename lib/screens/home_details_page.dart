@@ -31,8 +31,8 @@ class homeDetailPage extends StatelessWidget {
                             backgroundColor:
                                 MaterialStateProperty.all(Mythemes.darkBluish),
                             shape: MaterialStateProperty.all(StadiumBorder())),
-                        child: "Buy".text.xl.make())
-                    .wh(100, 50)
+                        child: "Add to cart".text.make())
+                    .wh(130, 50)
               ]).pOnly(right: 8).p32(),
         ),
         body: SafeArea(

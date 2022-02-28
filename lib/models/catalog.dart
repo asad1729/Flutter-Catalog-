@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 
 class CatalogModel {
   static List<Item> items = [];
+
+  //GET ITEMS BY ID
+  static Item getById(int id) =>
+      items.firstWhere((element) => element.id == id, orElse: null);
+
+  // GET ITEMS BY POSITION
+  static Item getByPosition(int pos) => items[pos];
 }
 
 class Item {
