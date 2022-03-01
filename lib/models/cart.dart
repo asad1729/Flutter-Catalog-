@@ -1,6 +1,8 @@
 import 'package:flutter_catalog/models/catalog.dart';
 
 class CartModel {
+  //This is what we call a singleton class .
+
   //catalog fields
   late CatalogModel _catalog;
 
@@ -27,8 +29,6 @@ class CartModel {
   void add(Item item) {
     _itemIds.add(item.id);
   }
-
-
 
   //REMOVE ITEM
   void remove(Item item) {

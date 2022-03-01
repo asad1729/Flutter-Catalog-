@@ -2,6 +2,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class CatalogModel {
+  static final catModel = CatalogModel._internal();
+  CatalogModel._internal();
+
+  factory CatalogModel() => catModel;
+  //SINGLETON CLASS
+
   static List<Item> items = [];
 
   //GET ITEMS BY ID
