@@ -5,7 +5,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_catalog/core/store.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
@@ -22,6 +23,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  final url = "https://api.jsonbin.io/b/6220f88406182767436c32fd";
+
   void initState() {
     super.initState();
     loadData();
@@ -29,8 +32,10 @@ class _HomePageState extends State<HomePage> {
 
   loadData() async {
     await Future.delayed(Duration(seconds: 2));
-    final catalogJSon =
-        await rootBundle.loadString("assets/files/catalog.json");
+    /* final catalogJSon =
+        await rootBundle.loadString("assets/files/catalog.json"); */
+    final response = await http.get(Uri.parse(url));
+    final catalogJSon = response.body;
     final decodedData = jsonDecode(catalogJSon);
     var productData = decodedData['products'];
     CatalogModel.items =
@@ -41,8 +46,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     //  final dummyList = List.generate(15, (index) => CatalogModel.items[0]);
 
-    final int days = 30;
-    final String name = "Flutter";
+    final _cart = (VxState.store as MyStore).cart;
 
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
@@ -52,7 +56,14 @@ class _HomePageState extends State<HomePage> {
           Navigator.pushNamed(context, MyRoutes.CartRoute);
         },
         child: Icon(CupertinoIcons.cart),
-      ),
+      ).badge(
+          color: Vx.red500,
+          size: 22,
+          count: _cart.items.length,
+          textStyle: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          )),
       body: SafeArea(
         child: Container(
             padding: Vx.m32,
